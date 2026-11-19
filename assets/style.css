@@ -1,0 +1,676 @@
+<<<<<<< HEAD
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html { 
+    scroll-behavior: smooth; 
+}
+body {
+    font-family: "微軟正黑體", sans-serif;
+    color: #000000;
+    line-height: 1.6;
+    width: 100%;
+    background-color: #ddb892;
+}
+
+nav {
+    background-color: #ddb892;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 5%;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* [特效] 滑鼠移到導覽列文字時放大，且底線從中央向兩側展開 — 使用 transition + transform:scale / scaleX */
+nav a {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 4px 8px;
+    transition: transform 0.3s ease;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+nav a:hover {
+    transform: scale(1.1);
+}
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+header {
+    background-color: #ddb892;
+    display: flex;
+    align-items: center;
+    padding: 30px 8%;
+    width: 100%;
+}
+.photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #ede0d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 45px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.info h2 { 
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.info p { 
+    margin: 6px 0; 
+    font-size: 16px;
+}
+
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 70vh;
+}
+
+aside {
+    width: 30%;
+    min-width: 280px;
+    max-width: 380px;
+    background-color: #ede0d4;
+    padding: 30px 25px;
+}
+
+section {
+    flex: 1;
+    background-color: #e6ccb2;
+    padding: 30px 40px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.sub {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+.text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+.mt15 { margin-top: 15px; }
+.mt25 { margin-top: 25px; }
+.mt35 { margin-top: 35px; }
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.label { 
+    width: 70px; 
+    font-weight: bold;
+    font-size: 15px;
+}
+.bar-bg {
+    flex: 1;
+    height: 16px;
+    background-color: #ddb892;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* [特效] 頁面載入時技能長條圖從左至右動態展開 — 使用 animation + @keyframes + transform:scaleX */
+.bar {
+    height: 100%;
+    background-color: #9c6644;
+    border-radius: 8px;
+    transform-origin: left;
+    animation: loadBar 1.5s ease-out forwards;
+}
+
+.python { width: 90%; }
+.java { width: 95%; }
+.html { width: 55%; }
+.css { width: 50%; }
+.toeic { width: 70%; }
+
+@keyframes loadBar {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
+aside p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+.social {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* [特效] 滑鼠移到 EMAIL 發信按鈕時背景與文字顏色平滑反轉 — 使用 transition:background-color, color */
+.mail {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 6px 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.mail:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.item {
+    padding-bottom: 15px;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.proof {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.media {
+    width: 48%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #000;
+}
+
+.link {
+    display: block;
+    width: 48%;
+    height: 230px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* [特效] 滑鼠移到可點擊的佐證資料照片時微幅放大 — 使用 transition + transform:scale */
+.link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.link:hover img {
+    transform: scale(1.05);
+}
+
+/* [特效] 滑鼠移到獎狀連結按鈕時變色並向上微幅浮動 — 使用 transition + transform:translateY */
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.45);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+    background-color: #ddb892;
+    transform: translateY(-2px);
+}
+
+footer {
+    background-color: #ddb892;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 20px;
+    width: 100%;
+    font-weight: bold;
+}
+.copy {
+    font-size: 16px;
+}
+
+/* [特效] 自訂圓形音樂按鈕，播放時持續旋轉且滑鼠懸停放大 — 使用 animation + @keyframes + transition */
+.disc {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #9c6644;
+    color: #fff;
+    border: 2px solid #ede0d4;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.disc:hover {
+    background-color: #7f5539;
+    transform: scale(1.12);
+}
+.disc.playing {
+    animation: spinDisc 4s linear infinite;
+}
+
+@keyframes spinDisc {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* [特效] 音樂提示標籤上下輕微浮動吸引注意，觸發播放後平滑淡出隱藏 — 使用 animation + transition:opacity */
+.hint {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #9c6644;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    pointer-events: none;
+    animation: floatHint 2s ease-in-out infinite;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.hint.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes floatHint {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.top {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 4px 14px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.top:hover {
+    background-color: #000;
+    color: #fff;
+=======
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html { 
+    scroll-behavior: smooth; 
+}
+body {
+    font-family: "微軟正黑體", sans-serif;
+    color: #000000;
+    line-height: 1.6;
+    width: 100%;
+    background-color: #ddb892;
+}
+
+nav {
+    background-color: #ddb892;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 18px 5%;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* [特效] 滑鼠移到導覽列文字時放大，且底線從中央向兩側展開 — 使用 transition + transform:scale / scaleX */
+nav a {
+    font-size: 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    padding: 4px 8px;
+    transition: transform 0.3s ease;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+nav a:hover {
+    transform: scale(1.1);
+}
+nav a:hover::after {
+    transform: scaleX(1);
+}
+
+header {
+    background-color: #ddb892;
+    display: flex;
+    align-items: center;
+    padding: 30px 8%;
+    width: 100%;
+}
+.photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: #ede0d4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 45px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.info h2 { 
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+.info p { 
+    margin: 6px 0; 
+    font-size: 16px;
+}
+
+.layout {
+    display: flex;
+    width: 100%;
+    min-height: 70vh;
+}
+
+aside {
+    width: 30%;
+    min-width: 280px;
+    max-width: 380px;
+    background-color: #ede0d4;
+    padding: 30px 25px;
+}
+
+section {
+    flex: 1;
+    background-color: #e6ccb2;
+    padding: 30px 40px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+h4 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+.sub {
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+.text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    text-align: justify;
+}
+.mt15 { margin-top: 15px; }
+.mt25 { margin-top: 25px; }
+.mt35 { margin-top: 35px; }
+
+.row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+}
+.label { 
+    width: 70px; 
+    font-weight: bold;
+    font-size: 15px;
+}
+.bar-bg {
+    flex: 1;
+    height: 16px;
+    background-color: #ddb892;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* [特效] 頁面載入時技能長條圖從左至右動態展開 — 使用 animation + @keyframes + transform:scaleX */
+.bar {
+    height: 100%;
+    background-color: #9c6644;
+    border-radius: 8px;
+    transform-origin: left;
+    animation: loadBar 1.5s ease-out forwards;
+}
+
+.python { width: 90%; }
+.java { width: 95%; }
+.html { width: 55%; }
+.css { width: 50%; }
+.toeic { width: 70%; }
+
+@keyframes loadBar {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
+}
+
+aside p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+.social {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* [特效] 滑鼠移到 EMAIL 發信按鈕時背景與文字顏色平滑反轉 — 使用 transition:background-color, color */
+.mail {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 6px 18px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.mail:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.item {
+    padding-bottom: 15px;
+}
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.proof {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.media {
+    width: 48%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #000;
+}
+
+.link {
+    display: block;
+    width: 48%;
+    height: 230px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* [特效] 滑鼠移到可點擊的佐證資料照片時微幅放大 — 使用 transition + transform:scale */
+.link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.link:hover img {
+    transform: scale(1.05);
+}
+
+/* [特效] 滑鼠移到獎狀連結按鈕時變色並向上微幅浮動 — 使用 transition + transform:translateY */
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    background-color: rgba(255, 255, 255, 0.45);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.btn:hover {
+    background-color: #ddb892;
+    transform: translateY(-2px);
+}
+
+footer {
+    background-color: #ddb892;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 20px;
+    width: 100%;
+    font-weight: bold;
+}
+.copy {
+    font-size: 16px;
+}
+
+/* [特效] 自訂圓形音樂按鈕，播放時持續旋轉且滑鼠懸停放大 — 使用 animation + @keyframes + transition */
+.disc {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: #9c6644;
+    color: #fff;
+    border: 2px solid #ede0d4;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.disc:hover {
+    background-color: #7f5539;
+    transform: scale(1.12);
+}
+.disc.playing {
+    animation: spinDisc 4s linear infinite;
+}
+
+@keyframes spinDisc {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* [特效] 音樂提示標籤上下輕微浮動吸引注意，觸發播放後平滑淡出隱藏 — 使用 animation + transition:opacity */
+.hint {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #9c6644;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    z-index: 999;
+    pointer-events: none;
+    animation: floatHint 2s ease-in-out infinite;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.hint.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes floatHint {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.top {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #000;
+    padding: 4px 14px;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.top:hover {
+    background-color: #000;
+    color: #fff;
+>>>>>>> 46ed1f4c604903bc8099504d17ac146327851f89
+}
